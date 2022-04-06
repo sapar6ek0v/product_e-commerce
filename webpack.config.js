@@ -22,16 +22,15 @@ if (process.env.SERVE) {
 
 module.exports = {
     mode: mode,
-    entry: "./src/index.js",
+    entry: "./src/index.tsx",
     output: {
         path: path.resolve(__dirname, "./dist"),
-        // filename: prod ? "[name].[hash].js" : "[name].js",
         assetModuleFilename: "images/[hash][ext][query]"
     },
     module: {
         rules: [
             {
-                test: /\.(js|jsx)$/i,
+                test: /\.(ts|js)x$/i,
                 exclude: /node-modules/,
                 use: {
                     loader: "babel-loader"
@@ -49,16 +48,20 @@ module.exports = {
                 ]
             },
             {
-                test: /\.(jpeg|jpg|png|svg|gif)$/i,
-                type: "asset"
-            }
+                test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
+                type: 'asset/resource',
+            },
+            {
+                test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
+                type: 'asset/inline',
+            },
         ]
     },
 
     plugins: plugins,
 
     resolve: {
-        extensions: [".js", ".jsx"]
+        extensions: [".ts", ".tsx", ".js", ".jsx"]
     },
 
     devtool: "source-map",
