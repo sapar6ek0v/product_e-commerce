@@ -27,7 +27,7 @@ You may also see any lint errors in the console.
 ### `npm run build`
 
 Build your project
-A file named `dist` should appear. And you can see the finished project
+A file named `dist` should appear. And you can see the finished project!
 
 
 
